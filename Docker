@@ -1,17 +1,8 @@
 FROM ghcr.io/puppeteer/puppeteer:21.11.0
-
-# Переключаемся на root для настройки прав
 USER root
-
-# Копируем файлы проекта
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
-
 COPY . .
-
-# Открываем порт
 EXPOSE 3000
-
-# Запуск
 CMD ["node", "server.js"]
